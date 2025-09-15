@@ -30,7 +30,7 @@ This repo is created to learn, revise, and practice Python step by step with sim
 ├── 00_intro.md                  # Overview of advanced concepts
 │
 ├── 01_data_structures.py        # List, Tuple, Set, Dictionary (advanced operations)
-├── 02_strings.py                # String methods, formatting, f-strings
+├── 02_strings.py                   
 ├── 03_file_handling.py          # File read/write, JSON, CSV
 ├── 04_exceptions.py             # Exception handling & custom exceptions
 ├── 05_modules_packages.py       # Built-in modules, custom modules, pip packages
