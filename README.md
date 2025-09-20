@@ -1,8 +1,26 @@
-# python-code
 # 🐍 Python Basics Repository
 
 Welcome to my **Python Basics Repository**!  
 This repo is created to learn, revise, and practice Python step by step with simple explanations, code examples, and notes.  
+
+---
+
+# ⚙️ Python Working Principle
+
+Python is a **high-level, interpreted, dynamically typed, and object-oriented** programming language.  
+Here’s what that really means:
+
+- **High-level** → You don’t manage memory or hardware directly (unlike C/C++). You focus on logic and problem-solving.  
+- **Interpreted** → Code runs line by line through the Python interpreter, not compiled into machine code beforehand.  
+- **Dynamically typed** → No need to declare types (`x = 5` works directly). Python decides the type at runtime.  
+- **Strongly typed** → Even though dynamic, Python enforces types. (`"5" + 5` throws an error instead of silently converting).  
+- **Object-oriented** → Everything in Python is an object — numbers, strings, functions, classes, even modules.  
+- **Portable** → Python code runs on different operating systems (Windows, Linux, macOS) with no changes.  
+
+### 🧩 A Bit Deeper
+- **Implementation** → The default implementation is **CPython** (written in C). Others exist too (PyPy, Jython, IronPython).  
+- **Memory Management** → Python uses **automatic garbage collection** (no manual `malloc`/`free` like C).  
+- **Integer Behavior** → Unlike C/C++ where `int` has a fixed 4 bytes, Python integers are **objects** with variable size (arbitrary precision). A small number like `1` may take 24–28 bytes in memory!  
 
 ---
 
@@ -77,6 +95,7 @@ This repo is created to learn, revise, and practice Python step by step with sim
 ---   
 
 ## ✍️ Author
+
 **Harsh Chauhan**  
 🎓 BCA Student | 💻 Learning Python, JS, Web Dev & AI  
 🚀 Goal: Cybersecurity & AI Enthusiast  
