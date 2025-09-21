@@ -13,12 +13,27 @@
         # print(line.strip())
 
 
-from greet import hello_fun,add
+# from greet import hello_fun,add
 
-contant = hello_fun()
-print(contant)
+# contant = hello_fun()
+# print(contant)
 
 # from greet import add
 
-sum = add(3,4)
-print(sum)
+# 
+
+
+# 
+
+
+import json
+
+data = {"username": "Karan", "email": "Karan@gmail.com","student":True}
+
+with open("json_file","w") as file:
+    json.dump(data,file,indent=4)
+
+
+with open("json_file","r") as f:
+    user = json.load(f)
+    print(user["username"])
