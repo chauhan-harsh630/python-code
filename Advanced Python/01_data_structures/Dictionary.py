@@ -61,3 +61,27 @@ for key, value in user.items():
 print("\nDictionary Keys:", user.keys())
 print("Dictionary Values:", user.values())
 print("Dictionary Items:", user.items())
+
+# -----------------------------
+# List of Dictionaries Example
+# -----------------------------
+users = [
+    {
+        "username": "Riddhi",
+        "id": "itz-pvt-queen",
+        "email": "riddhi-sharma@gmail.com",
+    },
+    {
+        "username": "Harsh",
+        "id": "defend.404",
+        "email": "harshchauhan@gmail.com",
+    },
+]
+
+# Searching inside the list of dictionaries
+for u in users:
+    if u["username"] == "Riddhi":
+        print("\nFound User:")
+        print("Username:", u["username"])
+        print("ID:", u["id"])
+        print("Email:", u["email"])
