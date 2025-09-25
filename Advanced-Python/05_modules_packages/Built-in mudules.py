@@ -15,7 +15,7 @@ print("\n")  # Just a separator for readability
 # Used to generate random numbers or select random items
 import random
 
-print("Random integer between 1 and 10:", random.randint(1, 10))
+print("Random integer between 1 and 10: ", random.randint(1, 10))
 print("Random choice from list:", random.choice(["Apple", "Banana", "Peere"]))
 
 print("\n")
