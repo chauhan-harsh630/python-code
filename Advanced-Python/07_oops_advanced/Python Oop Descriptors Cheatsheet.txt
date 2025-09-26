@@ -1,0 +1,165 @@
+# Python OOP & Descriptors Cheat Sheet
+
+---
+
+## 1. Class & Object
+
+```python
+class Person:
+    species = "Homo sapiens"  # class attribute
+
+    def __init__(self, name, age):  # constructor
+        self.name = name          # instance attribute
+        self.age = age
+
+p1 = Person("Harsh", 20)
+print(p1.name, p1.age, p1.species)
+```
+
+---
+
+## 2. Encapsulation
+
+* Hides internal state using **private/protected attributes**
+* Access via getter/setter methods
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # private
+
+    def get_balance(self):
+        return self.__balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+account = BankAccount(1000)
+print(account.get_balance())  # ✅ safe access
+```
+
+---
+
+## 3. Abstraction
+
+* Hides implementation details; exposes only essential methods
+* Use **abstract classes** (`abc` module)
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, r):
+        self.r = r
+    def area(self):
+        return 3.14 * self.r * self.r
+```
+
+---
+
+## 4. Inheritance
+
+* Child class inherits attributes/methods from parent class
+
+```python
+class Animal:
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+dog = Dog()
+print(dog.speak())  # Woof!
+```
+
+---
+
+## 5. Polymorphism
+
+* Same interface, different behavior
+* Example: method overriding or built-in functions
+
+```python
+print(len("hello"))   # 5
+print(len([1,2,3]))  # 3
+
+animals = [Dog(), Animal()]
+for a in animals:
+    print(a.speak())
+```
+
+---
+
+## 6. Descriptors
+
+* Reusable attribute control with `__get__`, `__set__`, `__set_name__`
+* Example: type checking
+
+```python
+class Typed:
+    def __init__(self, typ):
+        self.typ = typ
+        self.name = None
+
+    def __set_name__(self, owner, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self
+        return instance.__dict__.get(self.name)
+
+    def __set__(self, instance, value):
+        if not isinstance(value, self.typ):
+            raise TypeError(f"{self.name!r} must be {self.typ.__name__}")
+        instance.__dict__[self.name] = value
+
+class Person:
+    name = Typed(str)
+    age = Typed(int)
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+p = Person("Riddhi", 19)
+print(p.name, p.age)
+```
+
+---
+
+## 7. @property (Simpler Alternative to Descriptors)
+
+* Getter/setter for a single attribute
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius  # internal attribute
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Radius must be positive")
+        self._radius = value
+```
+
+---
+
+### Quick Tips
+
+* **Private attributes:** `__var` → name-mangled (`_Class__var`)
+* **Protected (convention):** `_var` → “don’t touch outside class/subclass”
+* **Polymorphism:** Same method name → different behavior
+* **Descriptors:** Use when multiple attributes need same rules
+* **@property:** Use for single attribute getters/setters
